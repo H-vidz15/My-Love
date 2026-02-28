@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Queen❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --bg-color: #0b0f19;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at center, #1a1f2e 0%, #000000 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+            position: relative;
+        }
+
+        /* Floating Background Animation */
+        .background-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floater {
+            position: absolute;
+            bottom: -100px;
+            animation: floatUp 15s linear infinite;
+            opacity: 0.6;
+            font-size: 2rem;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Main Card */
+        .card {
+            position: relative;
+            z-index: 10;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slideIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #ff4d6d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .signature {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 1rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            width: 100%;
+        }
+
+        .gem-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px rgba(255, 77, 109, 0.5));
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-elements" id="bg-elements">
+        </div>
+
+    <div class="card">
+        <div class="gem-icon">💎</div>
+        <h1 class="header">Hello My Queen</h1>
+        <p class="message">
+            I jus wanna thank you for coming through in my life... you're a <span class="highlight">gem</span> 💎 and will always keep a place in my heart for you 🥺❤️
+            <br><br>
+            I love you ghurll... you're just the best.
+        </p>
+        <div class="signature">- Anonymous</div>
+    </div>
+
+    <script>
+        // Generate floating hearts and gems
+        const container = document.getElementById('bg-elements');
+        const symbols = ['💎', '❤️', '✨', '💖'];
+
+        function createFloater() {
+            const el = document.createElement('div');
+            el.classList.add('floater');
+            el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            // Randomize position and animation speed
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            el.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            
+            container.appendChild(el);
+
+            // Remove element after animation to keep DOM clean
+            setTimeout(() => {
+                el.remove();
+            }, 25000);
+        }
+
+        // Create a new floater every 500ms
+        setInterval(createFloater, 500);
+
+        // Initial batch
+        for(let i=0; i<15; i++) {
+            createFloater();
+        }
+    </script>
+</body>
+      </html>
